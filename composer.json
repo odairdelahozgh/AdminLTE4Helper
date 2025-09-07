@@ -4,12 +4,11 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": ">=8.2",
-        "almasaeed2010/adminlte": "4.0.0-rc3"
+        "php": ">=8.2"
     },
     "autoload": {
         "psr-4": {
-            "AdminLTE\": "./"
+            "AdminLTE\\": "./"
         }
     },
     "minimum-stability": "dev",
