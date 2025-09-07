@@ -1,0 +1,17 @@
+{
+    "name": "odairdelahoz/adminlte4-helper",
+    "description": "A PHP library to generate AdminLTE 4 HTML components.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.2",
+        "almasaeed2010/adminlte": "4.0.0-rc3"
+    },
+    "autoload": {
+        "psr-4": {
+            "AdminLTE\": "./"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
