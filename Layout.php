@@ -61,7 +61,7 @@ class Layout {
         include $this->viewsPath . 'body_start.phtml';
     }
 
-    public function renderHeader(string $brandName = 'AdminLTE', array $menuItems = []): void {
+    public function renderHeader(string $brandName = 'AdminLTE', array $menuItems = [], array $user = null): void {
         include $this->viewsPath . 'header.phtml';
     }
 
