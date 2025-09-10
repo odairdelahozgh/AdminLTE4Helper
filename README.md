@@ -1,6 +1,6 @@
 # AdminLTE 4 PHP Helper Library
 
-A PHP library designed to simplify the generation of AdminLTE 4 HTML components and layouts.
+A PHP-8.2 library designed to simplify the generation of AdminLTE 4 HTML components, widgets and layouts.
 
 ## Description
 
