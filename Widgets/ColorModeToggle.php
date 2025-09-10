@@ -1,6 +1,6 @@
 <?php
 
-namespace AdminLTE\AdminLTE4\Widgets;
+namespace AdminLTE\Widgets;
 
 class ColorModeToggle
 {
