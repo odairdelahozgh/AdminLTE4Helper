@@ -93,7 +93,7 @@ class Layout {
         include $this->viewsPath . 'footer.phtml';
     }
 
-    public function renderBodyEnd(): void {
+    public function renderBodyEnd(array $javaScripts = []): void {
         include $this->viewsPath . 'body_end.phtml';
     }
 }
