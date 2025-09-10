@@ -89,7 +89,7 @@ class Layout {
         include $this->viewsPath . 'content_wrapper_end.phtml';
     }
 
-    public function renderFooter(string $content = '<b>Version</b> 4.0.0'): void {
+    public function renderFooter(string $content = '<b>Version</b> 4.0.0', string $copyright_years = '2025', string $copyright_link = 'https://adminlte.io', string $copyright_link_text = 'AdminLTE.io'): void {
         include $this->viewsPath . 'footer.phtml';
     }
 

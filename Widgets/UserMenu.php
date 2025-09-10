@@ -28,7 +28,7 @@ class UserMenu {
         $titleHtml = htmlspecialchars($title);
         $profileLinkHtml = htmlspecialchars($profile_link);
         $signoutLinkHtml = htmlspecialchars($signout_link);
-        
+
         return "
             <li class=\"nav-item dropdown user-menu\">
               <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">

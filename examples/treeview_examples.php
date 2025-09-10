@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../autoloader.php';
+// require_once __DIR__ . '/../autoloader.php';
 
 use AdminLTE\Components\Treeview;
 use AdminLTE\Components\Card;

@@ -1,6 +1,6 @@
 {
     "name": "odairdelahoz/adminlte4-helper",
-    "description": "A PHP library to generate AdminLTE 4 HTML components.",
+    "description": "A PHP-8 library to generate AdminLTE 4 HTML Components and Widgets with examples.",
     "type": "library",
     "license": "MIT",
     "require": {

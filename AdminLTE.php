@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace AdminLTE;
 
 // Cargar el autoloader de clases
-require_once __DIR__ . '/autoloader.php';
+//require_once __DIR__ . '/autoloader.php';
 
 use AdminLTE\Components\Accordion;
 use AdminLTE\Components\Alert;
