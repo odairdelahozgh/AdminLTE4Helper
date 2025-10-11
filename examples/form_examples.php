@@ -7,11 +7,11 @@ use AdminLTE\Components\Card;
 $formContent = '';
 
 // 1. Text Input
-$formContent .= Form::input('user_name', 'Username', ['placeholder' => 'Enter username', 'help_text' => 'Your public name.']);
+$formContent .= Form::text('user_name', 'Username', ['placeholder' => 'Enter username', 'help_text' => 'Your public name.']);
 
 // 2. Email and Password Inputs
-$formContent .= Form::input('email', 'Email Address', ['type' => 'email', 'placeholder' => 'user@example.com']);
-$formContent .= Form::input('password', 'Password', ['type' => 'password']);
+$formContent .= Form::email('email', 'Email Address', ['placeholder' => 'user@example.com']);
+$formContent .= Form::password('password', 'Password');
 
 // 3. Textarea
 $formContent .= Form::textarea('bio', 'Biography', ['rows' => 4, 'placeholder' => 'Tell us about yourself...']);
@@ -24,15 +24,15 @@ $formContent .= '<hr>';
 
 // 5. New Input Types
 $formContent .= '<h5>New Input Types</h5>';
-$formContent .= Form::input('profile_picture', 'Profile Picture', ['type' => 'file']);
-$formContent .= Form::input('start_date', 'Start Date', ['type' => 'date']);
-$formContent .= Form::input('satisfaction', 'Satisfaction Level', ['type' => 'range', 'min' => 0, 'max' => 100, 'step' => 1, 'value' => 75]);
+$formContent .= Form::file('profile_picture', 'Profile Picture');
+$formContent .= Form::date('start_date', 'Start Date');
+$formContent .= Form::range('satisfaction', 'Satisfaction Level', ['min' => 0, 'max' => 100, 'step' => 1, 'value' => 75]);
 
 $formContent .= '<hr>';
 
 // 6. Validation Errors
 $formContent .= '<h5>Validation Errors</h5>';
-$formContent .= Form::input('first_name', 'First Name', ['value' => 'John', 'error' => 'Please enter a valid first name.']);
+$formContent .= Form::text('first_name', 'First Name', ['value' => 'John', 'error' => 'Please enter a valid first name.']);
 $formContent .= Form::select('country', 'Country', ['' => 'Select a country', 'US' => 'United States'], ['error' => 'This field is required.']);
 
 

@@ -5,12 +5,12 @@ namespace AdminLTE\Components;
 class Form {
 
     /**
-     * Genera un campo de input completo (label, input, help text, error).
+     * Genera un campo de input genérico.
+     * Es mejor usar los métodos específicos como text(), email(), etc.
      */
-    public static function input(string $name, string $label, array $options = []): string
+    private static function _buildInput(string $type, string $name, string $label, array $options = []): string
     {
         $defaultOptions = [
-            'type' => 'text',
             'value' => '',
             'placeholder' => '',
             'help_text' => '',
@@ -27,35 +27,31 @@ class Form {
         $isInvalidClass = $options['error'] ? ' is-invalid' : '';
         $controlClass = 'form-control';
 
-        if ($options['type'] === 'range') {
+        if ($type === 'range') {
             $controlClass = 'form-range';
-        } elseif ($options['type'] === 'file') {
-            // Bootstrap file input doesn't need a different class here, but the structure is label-input.
         }
 
         $html = '<div class="mb-3">';
         $html .= '  <label for="' . $id . '" class="form-label">' . htmlspecialchars($label) . '</label>';
 
         $attributes = [
-            'type="' . $options['type'] . '"',
+            'type="' . $type . '"',
             'class="' . $controlClass . $isInvalidClass . '"',
             'id="' . $id . '"',
             'name="' . $name . '"',
-            'value="' . htmlspecialchars($options['value']) . '"',
             'placeholder="' . htmlspecialchars($options['placeholder']) . '"'
         ];
 
-        if ($options['type'] === 'range') {
+        // El atributo 'value' no se usa en inputs de tipo 'file' por seguridad.
+        if ($type !== 'file') {
+            $attributes[] = 'value="' . htmlspecialchars($options['value']) . '"';
+        }
+
+        if ($type === 'range') {
             if ($options['min'] !== null) $attributes[] = 'min="' . $options['min'] . '"';
             if ($options['max'] !== null) $attributes[] = 'max="' . $options['max'] . '"';
             if ($options['step'] !== null) $attributes[] = 'step="' . $options['step'] . '"';
         }
-        
-        // For file inputs, the value attribute is not used for security reasons.
-        if ($options['type'] === 'file') {
-            $attributes = array_filter($attributes, fn($attr) => !str_starts_with($attr, 'value='));
-        }
-
 
         $html .= '  <input ' . implode(' ', $attributes) . '>';
 
@@ -66,6 +62,62 @@ class Form {
         }
         $html .= '</div>';
         return $html;
+    }
+
+    /**
+     * Genera un campo de input de tipo 'text'.
+     */
+    public static function text(string $name, string $label, array $options = []): string
+    {
+        return self::_buildInput('text', $name, $label, $options);
+    }
+
+    /**
+     * Genera un campo de input de tipo 'password'.
+     */
+    public static function password(string $name, string $label, array $options = []): string
+    {
+        return self::_buildInput('password', $name, $label, $options);
+    }
+
+    /**
+     * Genera un campo de input de tipo 'email'.
+     */
+    public static function email(string $name, string $label, array $options = []): string
+    {
+        return self::_buildInput('email', $name, $label, $options);
+    }
+
+    /**
+     * Genera un campo de input de tipo 'number'.
+     */
+    public static function number(string $name, string $label, array $options = []): string
+    {
+        return self::_buildInput('number', $name, $label, $options);
+    }
+
+    /**
+     * Genera un campo de input de tipo 'date'.
+     */
+    public static function date(string $name, string $label, array $options = []): string
+    {
+        return self::_buildInput('date', $name, $label, $options);
+    }
+
+    /**
+     * Genera un campo de input de tipo 'file'.
+     */
+    public static function file(string $name, string $label, array $options = []): string
+    {
+        return self::_buildInput('file', $name, $label, $options);
+    }
+
+    /**
+     * Genera un campo de input de tipo 'range'.
+     */
+    public static function range(string $name, string $label, array $options = []): string
+    {
+        return self::_buildInput('range', $name, $label, $options);
     }
 
     /**
