@@ -18,9 +18,10 @@ class Button
      *   - 'element': Tipo de elemento HTML ('button' o 'a'). Por defecto: 'button'.
      *   - 'href': URL para botones de tipo 'a'. Por defecto: '#'.
      *   - 'customClass': Clases CSS adicionales. Por defecto: ''.
+     * @param array $htmx_opts Opciones para configurar HTMX.
      * @return string El HTML del botón.
      */
-    public static function render(string $text, array $options = []): string
+    public static function render(string $text, array $options = [], array $htmx_opts = []): string
     {
         $defaultOptions = [
             'color' => 'primary',
@@ -56,14 +57,21 @@ class Button
             $iconHtml = '<i class="' . htmlspecialchars($options['icon']) . '"></i> ';
         }
 
+        $htmx_attributes = '';
+        if (!empty($htmx_opts)) {
+            foreach ($htmx_opts as $key => $value) {
+                $htmx_attributes .= ' ' . htmlspecialchars($key) . '="' . htmlspecialchars((string)$value) . '"';
+            }
+        }
+
         $html = '';
         if ($options['element'] === 'a') {
-            $html .= '<a href="' . htmlspecialchars($options['href']) . '" class="' . htmlspecialchars($buttonClasses) . '" role="button">';
+            $html .= '<a href="' . htmlspecialchars($options['href']) . '" class="' . htmlspecialchars($buttonClasses) . '" role="button"' . $htmx_attributes . '>';
             $html .= $iconHtml . htmlspecialchars($text);
             $html .= '</a>';
         } else {
             // Default to button element
-            $html .= '<button type="' . htmlspecialchars($options['type']) . '" class="' . htmlspecialchars($buttonClasses) . '">';
+            $html .= '<button type="' . htmlspecialchars($options['type']) . '" class="' . htmlspecialchars($buttonClasses) . '"' . $htmx_attributes . '>';
             $html .= $iconHtml . htmlspecialchars($text);
             $html .= '</button>';
         }

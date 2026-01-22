@@ -72,6 +72,25 @@ echo $adminlte->render('content_wrapper_start');
                             <?php echo Button::render('Visit Google', ['element' => 'a', 'href' => 'https://www.google.com', 'color' => 'success']); ?>
                             <?php echo Button::render('Download File', ['element' => 'a', 'href' => '#', 'color' => 'info', 'icon' => 'fas fa-download']); ?>
                         </div>
+                        
+                        <h4>Botones con Opciones HTMX</h4>
+                        <div class="mb-3">
+                            <p>Estos botones no funcionarán a menos que se incluya HTMX en la página. (e.g. <code>&lt;script src="https://unpkg.com/htmx.org@1.9.10"&gt;&lt;/script&gt;</code>)</p>
+                            <?php echo Button::render('Cargar Contenido', ['color' => 'info'], ['hx-get' => 'https://jsonplaceholder.typicode.com/posts/1', 'hx-target' => '#content-area', 'hx-swap' => 'innerHTML', 'hx-indicator' => '#spinner']); ?>
+                            <?php echo Button::render(
+                                'Haz Click',
+                                ['color' => 'success'],
+                                ['hx-trigger' => 'click', 'hx-swap' => 'outerHTML', 'hx-get' => 'https://jsonplaceholder.typicode.com/todos/1']
+                            ); ?>
+                            <?php echo Button::render(
+                                'Enlace con HTMX',
+                                ['element' => 'a', 'href' => '#', 'color' => 'warning'],
+                                ['hx-get' => 'https://jsonplaceholder.typicode.com/comments/1', 'hx-indicator' => '#spinner', 'hx-target' => '#content-area']
+                            ); ?>
+                        </div>
+                        <div id="content-area" class="mt-3 p-3 border bg-light">Área de destino para los botones HTMX. El contenido se cargará aquí.</div>
+                        <i id="spinner" class="fas fa-spinner fa-spin fa-2x htmx-indicator"></i>
+                        <style>.htmx-indicator{display:none;} .htmx-request .htmx-indicator{display:inline-block;}</style>
                     </div>
                 </div>
             </div>
